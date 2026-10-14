@@ -1,0 +1,32 @@
+services:
+  # Python FastAPI Backend
+  - type: web
+    name: smart-cloud-storage-backend
+    env: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: STORAGE_BACKEND
+        value: local
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+
+  # Vite React Frontend
+  - type: web
+    name: smart-cloud-storage-frontend
+    env: static
+    plan: free
+    buildCommand: bun install && bun run build
+    staticPublishPath: .output/public
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: smart-cloud-storage-backend
+          type: web
+          property: host
