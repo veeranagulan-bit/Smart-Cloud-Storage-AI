@@ -22,7 +22,7 @@ services:
     name: smart-cloud-storage-frontend
     env: static
     plan: free
-    buildCommand: bun install && bun run build
+    buildCommand: npm install && npm run build
     staticPublishPath: .output/public
     envVars:
       - key: VITE_API_URL
