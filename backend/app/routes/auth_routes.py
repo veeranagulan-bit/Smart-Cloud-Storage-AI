@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Depends, status
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from app.auth import hash_password, verify_password, create_access_token, get_current_user
 from app.database import db
 from app.config import settings
@@ -9,12 +9,12 @@ from app.config import settings
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
 class RegisterRequest(BaseModel):
-    email: EmailStr
+    email: str
     password: str
     name: str | None = None
 
 class LoginRequest(BaseModel):
-    email: EmailStr
+    email: str
     password: str
 
 class AuthResponse(BaseModel):
@@ -25,6 +25,8 @@ class AuthResponse(BaseModel):
 @router.post("/register", response_model=AuthResponse)
 def register(req: RegisterRequest):
     email_clean = req.email.lower().strip()
+    if "@" not in email_clean or "." not in email_clean:
+        raise HTTPException(status_code=400, detail="Please provide a valid email address")
     existing = db.users.find_one({"email": email_clean})
     if existing:
         raise HTTPException(status_code=400, detail="An account with this email already exists")
