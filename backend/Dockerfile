@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
 
 COPY requirements.txt .
-RUN grep -v "^torch==" requirements.txt > reqs_no_torch.txt && \
+RUN grep -v "^torch" requirements.txt | grep -v "^\-\-" > reqs_no_torch.txt && \
     pip install --no-cache-dir -r reqs_no_torch.txt
 
 COPY . .
