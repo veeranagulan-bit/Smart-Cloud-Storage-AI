@@ -43,36 +43,36 @@ function Dashboard() {
   ];
 
   return (
-    <div className="space-y-6">
-      <section className="glass relative overflow-hidden p-6 md:p-10">
+    <div className="space-y-4 sm:space-y-6">
+      <section className="glass relative overflow-hidden p-4 sm:p-6 md:p-10">
         <div className="pointer-events-none absolute inset-0 grid-lines opacity-40" />
-        <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_1.2fr]">
+        <div className="relative grid items-center gap-6 sm:gap-8 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <DemoBadge label={liveMode ? "Live Cloud Vault" : "Demo mode"} />
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
               Your Files. <span className="text-gradient">Intelligently Connected.</span>
             </motion.h1>
-            <p className="mt-4 max-w-lg text-muted-foreground">
-              Smart Cloud Storage AI organizes, classifies and links your files by meaning — so the right document finds you. This preview runs entirely in your browser with sample data.
+            <p className="mt-2.5 sm:mt-4 max-w-lg text-xs sm:text-sm md:text-base text-muted-foreground">
+              Smart Cloud Storage AI organizes, classifies and links your files by meaning — so the right document finds you.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/upload" className={btn({ size: "lg" })}><UploadCloud className="h-5 w-5" /> Upload Files</Link>
-              <Link to="/search" className={btn({ variant: "ghost", size: "lg" })}><Search className="h-5 w-5" /> Explore Smart Search</Link>
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+              <Link to="/upload" className={cn(btn({ size: "lg" }), "w-full sm:w-auto justify-center text-xs sm:text-sm")}><UploadCloud className="h-4 w-4 sm:h-5 sm:w-5" /> Upload Files</Link>
+              <Link to="/search" className={cn(btn({ variant: "ghost", size: "lg" }), "w-full sm:w-auto justify-center text-xs sm:text-sm")}><Search className="h-4 w-4 sm:h-5 sm:w-5" /> Explore Smart Search</Link>
             </div>
           </div>
-          <HeroHands className="min-h-[300px] md:min-h-[420px]" />
+          <HeroHands className="min-h-[220px] sm:min-h-[300px] md:min-h-[420px]" />
         </div>
       </section>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 xl:grid-cols-4">
         {metrics.map((m, i) => (
-          <Glass key={m.label} delay={0.1 + i * 0.07} className={cn("glass-hover metric-option", ["option-lavender", "option-rose", "option-mint", "option-peach"][i])}>
+          <Glass key={m.label} delay={0.1 + i * 0.07} className={cn("glass-hover metric-option p-3 sm:p-5", ["option-lavender", "option-rose", "option-mint", "option-peach"][i])}>
             <div className="flex items-center justify-between">
-              <p className="text-sm text-muted-foreground">{m.label}</p>
-              <span className="option-icon grid h-9 w-9 place-items-center rounded-lg"><m.icon className="h-4.5 w-4.5" /></span>
+              <p className="text-xs sm:text-sm text-muted-foreground truncate">{m.label}</p>
+              <span className="option-icon grid h-7 w-7 sm:h-9 sm:w-9 place-items-center rounded-lg shrink-0"><m.icon className="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5" /></span>
             </div>
-            <p className="mt-3 font-display text-3xl font-semibold">{m.node}</p>
-            {m.pct !== null ? <Progress value={m.pct} className="mt-4" /> : <p className="mt-4 text-xs text-muted-foreground">Sample library</p>}
+            <p className="mt-2 sm:mt-3 font-display text-lg sm:text-3xl font-semibold truncate">{m.node}</p>
+            {m.pct !== null ? <Progress value={m.pct} className="mt-3 sm:mt-4" /> : <p className="mt-3 sm:mt-4 text-[11px] sm:text-xs text-muted-foreground truncate">Sample library</p>}
           </Glass>
         ))}
       </div>

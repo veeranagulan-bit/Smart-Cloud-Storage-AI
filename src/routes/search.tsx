@@ -60,10 +60,10 @@ function SearchPage() {
       <PageHeader eyebrow="Find by meaning" title="AI Semantic Search" desc="Natural language search powered by 384-dimensional dense sentence embeddings and cosine similarity across your library content." actions={<DemoBadge label={liveMode ? "Dense Vector Search" : "Demo ranking"} />} />
       <form onSubmit={submit} className="group relative">
         <motion.div className="absolute -inset-0.5 rounded-3xl bg-aurora opacity-30 blur-md transition-opacity group-focus-within:opacity-80" />
-        <div className="relative flex items-center gap-3 rounded-3xl border border-border bg-popover p-2 pl-5">
-          <Sparkles className="h-5 w-5 shrink-0 text-cyan" />
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. Show documents about machine learning" aria-label="Semantic search query" className="h-12 flex-1 bg-transparent text-lg outline-none" />
-          <Btn type="submit" size="lg"><Search className="h-5 w-5" /> <span className="hidden sm:inline">Search</span></Btn>
+        <div className="relative flex items-center gap-2 sm:gap-3 rounded-3xl border border-border bg-popover p-1.5 sm:p-2 pl-3.5 sm:pl-5">
+          <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-cyan" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. machine learning notes" aria-label="Semantic search query" className="h-10 sm:h-12 flex-1 min-w-0 bg-transparent text-sm sm:text-lg outline-none placeholder:text-muted-foreground/70" />
+          <Btn type="submit" size="lg" className="h-10 sm:h-12 px-4 sm:px-6"><Search className="h-4 w-4 sm:h-5 sm:w-5" /> <span className="hidden sm:inline">Search</span></Btn>
         </div>
       </form>
       <div className="mt-4 flex flex-wrap gap-2">

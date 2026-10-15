@@ -49,11 +49,11 @@ export function DemoBadge({ label = "Demo data" }: { label?: string }) {
 
 export function PageHeader({ eyebrow, title, desc, actions }: { eyebrow: string; title: string; desc?: string; actions?: ReactNode }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div className="mb-4 sm:mb-6 flex flex-wrap items-end justify-between gap-3 sm:gap-4">
       <div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan">{eyebrow}</p>
-        <h1 className="mt-1 text-3xl font-semibold md:text-4xl">{title}</h1>
-        {desc && <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{desc}</p>}
+        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-cyan">{eyebrow}</p>
+        <h1 className="mt-1 text-2xl sm:text-3xl md:text-4xl font-semibold">{title}</h1>
+        {desc && <p className="mt-1.5 sm:mt-2 max-w-2xl text-xs sm:text-sm text-muted-foreground">{desc}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </div>

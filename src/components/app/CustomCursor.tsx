@@ -60,7 +60,7 @@ export function CustomCursor() {
   if (!enabled || !visible) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none">
+    <div className="hidden lg:block pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none">
       {/* Outer fluid aura ring with aurora gradient border and subtle glow */}
       <motion.div
         className="fixed top-0 left-0 rounded-full"

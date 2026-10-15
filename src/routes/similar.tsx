@@ -57,7 +57,7 @@ function SimilarPage() {
           </ul>
         </Glass>
         <div className="space-y-6">
-          <Glass className="relative aspect-[16/10] overflow-hidden p-0">
+          <Glass className="relative min-h-[290px] sm:min-h-[380px] md:aspect-[16/10] overflow-hidden p-0">
             <div className="absolute inset-0 grid-lines opacity-30" />
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 62.5" preserveAspectRatio="none" aria-hidden>
               {related.map((r, i) => {

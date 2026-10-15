@@ -121,7 +121,7 @@ function UploadPage() {
       <motion.div
         onDragOver={(e) => { e.preventDefault(); setDrag(true); }} onDragLeave={() => setDrag(false)} onDrop={onDrop}
         animate={{ scale: drag ? 1.015 : 1 }}
-        className={cn("glass relative grid place-items-center overflow-hidden border-2 border-dashed p-10 text-center transition-colors md:p-16", drag ? "border-cyan bg-cyan/10 glow-cyan" : "border-violet/30")}
+        className={cn("glass relative grid place-items-center overflow-hidden border-2 border-dashed p-6 text-center transition-colors sm:p-10 md:p-16", drag ? "border-cyan bg-cyan/10 glow-cyan" : "border-violet/30")}
       >
         {drag && <div className="pointer-events-none absolute inset-x-0 h-24 animate-scan bg-gradient-to-b from-transparent via-cyan/20 to-transparent" />}
         <motion.div animate={{ y: drag ? -8 : [0, -6, 0] }} transition={{ repeat: drag ? 0 : Infinity, duration: 3 }} className="grid h-20 w-20 place-items-center rounded-3xl bg-aurora glow-violet">

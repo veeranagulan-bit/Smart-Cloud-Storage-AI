@@ -48,8 +48,8 @@ export function Intro() {
             loop
             playsInline
           />
-          <div className="relative z-10 flex min-h-screen flex-col">
-            <nav className="flex items-center justify-center px-4 pt-4 sm:px-8 sm:pt-6">
+          <div className="relative z-10 flex min-h-screen flex-col justify-between">
+            <nav className="flex items-center justify-center px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-8 sm:pt-6">
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -60,31 +60,36 @@ export function Intro() {
               </motion.div>
             </nav>
 
-            <div className="flex flex-1 items-end px-6 pb-10 sm:px-12 sm:pb-16 md:px-20 lg:px-28 lg:pb-20">
+            <div className="flex items-end px-5 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-12 sm:pb-16 md:px-20 lg:px-28 lg:pb-20">
               <motion.div
-                className="max-w-xs"
+                className="w-full max-w-md"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
               >
                 <button
                   onClick={enter}
-                  className="group mb-3 inline-flex items-center gap-1.5 text-[11.5px] font-medium text-primary transition-colors hover:opacity-80"
+                  className="group mb-2.5 inline-flex items-center gap-1.5 text-xs font-medium text-primary transition-colors hover:opacity-80"
                 >
-                  Smart Cloud Storage AI · Demo
+                  <span className="h-2 w-2 rounded-full bg-cyan animate-pulse" />
+                  Smart Cloud Storage AI
                   <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </button>
-                <h1 className="mb-3 text-[1.5rem] font-medium leading-[1.15] tracking-tight text-foreground sm:text-[1.75rem]">
+                <h1 className="mb-2.5 text-2xl font-semibold leading-[1.2] tracking-tight text-foreground sm:text-3xl md:text-4xl">
                   Your files, intelligently connected — by human and AI.
                 </h1>
-                <p className="mb-3 text-[13px] text-muted-foreground">Organize, search and find anything by meaning.</p>
-                <button
-                  onClick={enter}
-                  className="group inline-flex items-center gap-2 rounded-full border border-primary px-5 py-2.5 text-[13px] font-medium text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground"
-                >
-                  Enter dashboard
-                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-                </button>
+                <p className="mb-4 text-xs sm:text-sm text-muted-foreground">
+                  Organize, search and discover your documents by meaning.
+                </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                  <button
+                    onClick={enter}
+                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-primary bg-primary/10 px-6 py-3 text-sm font-medium text-primary backdrop-blur-md transition-all duration-200 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
+                  >
+                    Enter dashboard
+                    <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                  </button>
+                </div>
               </motion.div>
             </div>
           </div>

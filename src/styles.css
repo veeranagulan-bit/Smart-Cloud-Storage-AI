@@ -112,12 +112,20 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { color-scheme: light; }
+  html {
+    color-scheme: light;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-      }
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+  }
   h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0; }
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 }

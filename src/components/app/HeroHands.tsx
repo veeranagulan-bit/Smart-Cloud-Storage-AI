@@ -35,13 +35,13 @@ export function HeroHands({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden select-none touch-none ${className}`}
       onPointerMove={onMove}
       onPointerLeave={() => { mx.set(0); my.set(0); }}
       aria-hidden
     >
       {/* aura */}
-      <motion.div style={{ x: auraX }} className="pointer-events-none absolute left-1/2 top-1/2 h-[min(70%,22rem)] aspect-square -translate-x-1/2 -translate-y-1/2">
+      <motion.div style={{ x: auraX }} className="pointer-events-none absolute left-1/2 top-1/2 h-[min(72%,22rem)] aspect-square -translate-x-1/2 -translate-y-1/2">
         <div className="absolute inset-0 rounded-full bg-aurora opacity-25 blur-3xl" />
         <div className="absolute inset-[12%] animate-spin-slow rounded-full border-2 border-violet/40 [border-top-color:var(--cyan)] blur-[1px]" />
         <div className="absolute inset-[30%] rounded-full bg-cyan/20 blur-2xl" />
@@ -83,7 +83,7 @@ export function HeroHands({ className = "" }: { className?: string }) {
       </svg>
 
       {/* human hand — enters from left */}
-      <motion.div style={{ x: lx, y: ly }} className="absolute left-0 top-1/2 w-[58%] -translate-y-[58%]">
+      <motion.div style={{ x: lx, y: ly }} className="pointer-events-none absolute left-0 top-1/2 w-[62%] sm:w-[58%] -translate-y-[58%]">
         <motion.img
           src={human} width={1280} height={768} alt=""
           initial={{ x: "-40%", opacity: 0 }}
@@ -95,7 +95,7 @@ export function HeroHands({ className = "" }: { className?: string }) {
       </motion.div>
 
       {/* robot hand — enters from right */}
-      <motion.div style={{ x: rx, y: ry }} className="absolute right-0 top-1/2 w-[58%] -translate-y-[50%]">
+      <motion.div style={{ x: rx, y: ry }} className="pointer-events-none absolute right-0 top-1/2 w-[62%] sm:w-[58%] -translate-y-[50%]">
         <motion.img
           src={robot} width={1280} height={768} alt=""
           initial={{ x: "40%", opacity: 0 }}

@@ -39,21 +39,21 @@ function FilesPage() {
 
   return (
     <div>
-      <PageHeader eyebrow="Library" title="My Files" desc="Your demo library. Files you add in Smart Upload appear here for this session."
-        actions={<Link to="/upload" className={btn()}>Add files</Link>} />
+      <PageHeader eyebrow="Library" title="My Files" desc="Your cloud library. Files you add in Smart Upload appear here."
+        actions={<Link to="/upload" className={cn(btn(), "text-xs sm:text-sm")}>Add files</Link>} />
 
-      <div className="glass mb-5 flex flex-wrap items-center gap-3 p-3">
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter by name…" aria-label="Filter files" className="h-10 min-w-48 flex-1 rounded-full border border-border bg-input/40 px-4 text-sm outline-none focus:border-violet" />
-        <select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Category" className="h-10 rounded-full border border-border bg-popover px-3 text-sm">
+      <div className="glass mb-5 flex flex-wrap items-center gap-2 sm:gap-3 p-2.5 sm:p-3">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter by name…" aria-label="Filter files" className="h-9 sm:h-10 min-w-36 flex-1 rounded-full border border-border bg-input/40 px-3.5 sm:px-4 text-xs sm:text-sm outline-none focus:border-violet" />
+        <select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Category" className="h-9 sm:h-10 rounded-full border border-border bg-popover px-2.5 sm:px-3 text-xs sm:text-sm">
           <option>All</option>{CATEGORIES.map((c) => <option key={c}>{c}</option>)}
         </select>
-        <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} aria-label="Sort by" className="h-10 rounded-full border border-border bg-popover px-3 text-sm">
+        <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} aria-label="Sort by" className="h-9 sm:h-10 rounded-full border border-border bg-popover px-2.5 sm:px-3 text-xs sm:text-sm">
           <option value="date">Newest</option><option value="name">Name</option><option value="size">Size</option><option value="category">Category</option>
         </select>
-        <Btn variant={favOnly ? "primary" : "ghost"} size="sm" onClick={() => setFavOnly((v) => !v)} aria-pressed={favOnly}><Star className="h-3.5 w-3.5" /> Favorites</Btn>
-        <div className="flex rounded-full border border-border p-1">
-          <button onClick={() => setView("grid")} aria-label="Grid view" className={cn("rounded-full p-1.5", view === "grid" && "bg-violet/20 text-cyan")}><Grid3x3 className="h-4 w-4" /></button>
-          <button onClick={() => setView("list")} aria-label="List view" className={cn("rounded-full p-1.5", view === "list" && "bg-violet/20 text-cyan")}><List className="h-4 w-4" /></button>
+        <Btn variant={favOnly ? "primary" : "ghost"} size="sm" onClick={() => setFavOnly((v) => !v)} aria-pressed={favOnly} className="h-9 text-xs"><Star className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Favorites</span></Btn>
+        <div className="flex rounded-full border border-border p-0.5 sm:p-1 shrink-0">
+          <button onClick={() => setView("grid")} aria-label="Grid view" className={cn("rounded-full p-1.5", view === "grid" && "bg-violet/20 text-cyan")}><Grid3x3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" /></button>
+          <button onClick={() => setView("list")} aria-label="List view" className={cn("rounded-full p-1.5", view === "list" && "bg-violet/20 text-cyan")}><List className="h-3.5 w-3.5 sm:h-4 sm:w-4" /></button>
         </div>
       </div>
 
@@ -97,10 +97,10 @@ function FilesPage() {
 
       <AnimatePresence>
         {current && (
-          <motion.div className="fixed inset-0 z-50 grid place-items-center bg-background/70 p-4 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSel(null)}>
-            <motion.div role="dialog" aria-modal="true" aria-label="File details" initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.94, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass w-full max-w-lg bg-popover p-6">
+          <motion.div className="fixed inset-0 z-50 grid place-items-center bg-background/70 p-3 sm:p-4 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSel(null)}>
+            <motion.div role="dialog" aria-modal="true" aria-label="File details" initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.94, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass w-full max-w-lg bg-popover p-4 sm:p-6 max-h-[88vh] overflow-y-auto">
               <div className="mb-4 flex items-start justify-between">
-                <div className="flex items-center gap-3"><FileIcon kind={current.kind} /><div><p className="font-semibold">{current.name}.{current.ext}</p><p className="text-xs text-muted-foreground">{formatBytes(current.size)} · {formatDate(current.date)}</p></div></div>
+                <div className="flex items-center gap-2.5 sm:gap-3"><FileIcon kind={current.kind} className="h-9 w-9 sm:h-10 sm:w-10" /><div className="min-w-0"><p className="font-semibold text-sm sm:text-base truncate">{current.name}.{current.ext}</p><p className="text-xs text-muted-foreground">{formatBytes(current.size)} · {formatDate(current.date)}</p></div></div>
                 <button onClick={() => setSel(null)} aria-label="Close" className={btn({ variant: "subtle", size: "icon" })}><X className="h-4 w-4" /></button>
               </div>
               <div className="mb-4 grid min-h-40 place-items-center overflow-hidden rounded-xl border border-border bg-accent/30">
